@@ -36,12 +36,11 @@ fi
 
 sh -c "firebase $*"
 
-# response=$(firebase $*)
+response=$(firebase $*)
+echo "::set-output name=response::$response"
 
-# if [ $? -eq 0 ]; then
-#   echo "$response"
-#   exit 0
-# else
-#   echo "$response"
-#   exit 1
-# fi
+if [ $? -eq 0 ]; then  
+  exit 0
+else
+  exit 1
+fi
